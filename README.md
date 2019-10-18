@@ -1,10 +1,11 @@
 # js-myLaypage
 ## Customize Laypage modules which could be used in your project depending on Layui.
-###Usage
+### Usage
   1. import the 'layui.js'
   2. import 'myLaypage.css' to you project which is placed in 'css/myLaypage.css'
   3. import the 'myLaypage.js' to your own js directory
   4. use 
+  ```
         layui.config({
              base: 'your js directory path/'
         }).use('myLaypage',function(){
@@ -19,3 +20,4 @@
                 jumpError:function(index){} // the callback which is triggerd when illegal index is set
              );
         })
+```
