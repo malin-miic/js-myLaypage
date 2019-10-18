@@ -1,0 +1,57 @@
+.lay-panel {
+    list-style-type: none;
+    display: inline-block;
+    font-size:13px;
+    vertical-align: middle;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none;  /*webkit浏览器*/
+    -ms-user-select: none;   /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
+    padding:0;
+}
+.lay-panel li{
+    display: inline-block;
+    height: 28px;
+    min-width: 28px;
+    list-style-type: none;
+    border: 1px solid #dce0e0;
+    line-height: 28px;
+    text-align: center;
+    margin-right: 5px;
+    background: #f9f9f9;
+}
+.lay-panel[go] li{
+    border:none!important;
+    background: transparent;
+}
+.lay-panel[go] input{
+    outline: none;
+    width:30px;
+}
+.lay-panel[go] a{
+    display: inline-block;
+    height:28px;
+    width:50px;
+    font-size:13px;
+    border:1px solid #dce0e0;
+    border-radius: 2px;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+.lay-panel[go] a:hover{
+    background: #0073A9!important;
+    color:white;
+}
+.lay-item-prev,.lay-item-next{
+    min-width:50px!important;
+}
+.lay-item-active{
+    background: #0073A9!important;
+}
+.lay-item-hide{
+    cursor: no-drop;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    opacity: 0.6;
+    color:gray;
+}
