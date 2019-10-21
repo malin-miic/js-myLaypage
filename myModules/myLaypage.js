@@ -57,39 +57,35 @@ layui.define('jquery',function (exports) {
             if(options.showGo){
                 //需要在这里显示跳转界面
                 arr.push(['<ul class="',LAY_PANEL,'" go><li>跳转到</li><li><input type="text" placeholder="',options.cuPage,'" />&nbsp页</li>'].join(''))
-                arr.push('<li><a id="jumpBtn">确定</a></li>')
+                arr.push('<li><a>确定</a></li>')
             }
             elem.html(arr.join(''));
-
-            $('#jumpBtn').click(function () {
-                var page=  elem.find('input').val();
-                that.jump(page);
-            });
             return this;
         },
         onClick:function () {
              var options = this.options;
              var that  =this;
-            this.elem.find('ul:first-child').find('li').off('click').on('click',function (e) {
-                if(options.changing){
-                    return;
-                }
-                var t = $(e.target);
-                if(t.hasClass(LAY_NUM)){
-                    options.cuPage =  t.text()|0;
-                }else if(t.hasClass(LAY_PREV)){
-                    //点击了上页
-                    --options.cuPage;
-                }else if(t.hasClass(LAY_NXT)){
-                    ++options.cuPage;
-                }else if(t.hasClass(LAY_HIDE)) {
-                    return;
-                }
-              // that.render().onClick().hook().disable();
-                that.jump(options.cuPage);
-            }
-
-            )
+            that.elem.on('click','ul:first-child>li',function (e) {
+                 if(options.changing){
+                     return;
+                 }
+                 var t = $(e.target);
+                 if(t.hasClass(LAY_NUM)){
+                     options.cuPage =  t.text()|0;
+                 }else if(t.hasClass(LAY_PREV)){
+                     //点击了上页
+                     --options.cuPage;
+                 }else if(t.hasClass(LAY_NXT)){
+                     ++options.cuPage;
+                 }else if(t.hasClass(LAY_HIDE)) {
+                     return;
+                 }
+                 that.jump(options.cuPage);
+             });
+            that.elem.on('click','ul:last-child li>a',function (e) {
+                var page=  that.elem.find('input').val();
+                that.jump(page);
+            })
             return this;
         },
         hook:function () {
@@ -121,7 +117,7 @@ layui.define('jquery',function (exports) {
                 options.jumpError(index);
             }else{
                 options.cuPage = index;
-                this.render().onClick().hook().disable();
+                this.render().hook().disable();
             }
         }
     }

@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="css/myLaypage.css">
 </head>
 <body>
-<div id="page"></div>
+<div id="page1"></div>
+<div id="page2"></div>
 </body>
 <script>
     layui.config({
@@ -15,7 +16,7 @@
     }).use('myLaypage',function () {
        var laypage = layui.myLaypage;
        laypage.render({
-           ele:'#page',
+           ele:'#page1',
            pageNum:50,
            btnNum:8,
            cuPage:1,
@@ -26,7 +27,20 @@
            jumpError:function (index) {
                alert(['无效的页码:',index].join(''));
            }
-       })
+       });
+        laypage.render({
+            ele:'#page2',
+            pageNum:100,
+            btnNum:20,
+            cuPage:1,
+            showGo:true,
+            clickIndex:function (cuPage) {
+                alert(['您点击了',cuPage,'页'].join(''));
+            },
+            jumpError:function (index) {
+                alert(['无效的页码:',index].join(''));
+            }
+        });
     })
 </script>
 </html>
